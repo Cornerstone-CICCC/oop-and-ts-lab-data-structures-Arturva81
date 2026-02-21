@@ -4,7 +4,26 @@
 const Stack = require('../lib/Stack');
 
 function insertAfterTarget(stack, target, newElement) {
-  // your code here
+  const tempStack = new Stack();
+  let foundTarget = false;
+
+  while (!stack.isEmpty()) {
+    const current = stack.pop();
+    tempStack.push(current);
+    if (current === target) {
+      foundTarget = true;
+      break;
+    }
+  }
+
+  if (foundTarget) {
+    tempStack.push(newElement);
+  }
+
+  while (!tempStack.isEmpty()) {
+    stack.push(tempStack.pop());
+  }
+  
 }
 
 const stack = new Stack();
